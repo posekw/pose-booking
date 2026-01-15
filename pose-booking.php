@@ -16,7 +16,7 @@ if (!defined('ABSPATH')) {
 }
 
 // Plugin Constants
-define('POSE_BOOKING_VERSION', '2.0.2');
+define('POSE_BOOKING_VERSION', '2.0.3');
 define('POSE_BOOKING_PATH', plugin_dir_path(__FILE__));
 define('POSE_BOOKING_URL', plugin_dir_url(__FILE__));
 
@@ -159,10 +159,18 @@ class Pose_Booking
                 --pose-card-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
                 --pose-desc-color: #666666;
                 --pose-card-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+                --pose-card-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+                --pose-desc-color: #666666;
                 --pose-hover-shadow: 0 10px 30px rgba(99, 102, 241, 0.2);
                 --pose-form-bg: linear-gradient(145deg, #ffffff, #f8fafc);
+                --pose-primary-transparent: {$primary_color}4d; /* 30% opacity */
             }
             ";
+        }
+
+        // Ensure primary transparent is always available if not set above (fallback)
+        if (strpos($css_vars, '--pose-primary-transparent') === false) {
+            $css_vars .= ":root { --pose-primary-transparent: {$primary_color}4d; }";
         }
 
         wp_add_inline_style('pose-booking-public', $css_vars);
