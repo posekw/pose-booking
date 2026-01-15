@@ -132,14 +132,15 @@
 }
 
 .session-type-card {
-    background: white;
+    background: var(--pose-card-bg, #ffffff);
+    color: var(--pose-text-color, #1f2937);
     border-radius: 12px;
     padding: 25px 20px;
     text-align: center;
     cursor: pointer;
     transition: all 0.3s ease;
-    border: 2px solid transparent;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--pose-card-border, transparent);
+    box-shadow: var(--pose-card-shadow, 0 4px 15px rgba(0, 0, 0, 0.05));
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -148,16 +149,16 @@
 
 .session-desc {
     font-size: 0.9em;
-    color: #666;
+    color: var(--pose-desc-color, #666);
     margin: 15px 0;
-    line-height: 1.5;
+    line-height: 1.6;
     flex-grow: 1;
 }
 
 .session-type-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(99, 102, 241, 0.2);
-    border-color: var(--card-color, var(--pose-primary));
+    box-shadow: var(--pose-hover-shadow, 0 10px 30px rgba(99, 102, 241, 0.2));
+    border-color: var(--pose-primary);
 }
 
 .session-type-card.selected {

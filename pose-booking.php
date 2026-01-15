@@ -47,6 +47,7 @@ class Pose_Booking
         require_once POSE_BOOKING_PATH . 'includes/class-session-types.php';
         require_once POSE_BOOKING_PATH . 'includes/class-availability.php';
         require_once POSE_BOOKING_PATH . 'includes/class-booking-form.php';
+        require_once POSE_BOOKING_PATH . 'includes/class-settings.php';
     }
 
     private function init_components()
@@ -55,6 +56,7 @@ class Pose_Booking
         Pose_Session_Types::get_instance();
         Pose_Availability::get_instance();
         Pose_Booking_Form::get_instance();
+        new Pose_Settings();
     }
 
     private function init_hooks()
@@ -120,6 +122,42 @@ class Pose_Booking
             array(),
             POSE_BOOKING_VERSION
         );
+
+        // Dynamic Styles from Settings
+        $options = get_option('pose_booking_options');
+        $primary_color = isset($options['primary_color']) ? $options['primary_color'] : '#6366f1';
+        $theme_mode = isset($options['theme_mode']) ? $options['theme_mode'] : 'light';
+
+        $css_vars = ":root { --pose-primary: {$primary_color}; }";
+
+        if ($theme_mode === 'dark') {
+            $css_vars .= "
+            :root {
+                --pose-card-bg: rgba(255, 255, 255, 0.05);
+                --pose-card-border: rgba(255, 255, 255, 0.1);
+                --pose-text-color: #ffffff;
+                --pose-desc-color: #cccccc;
+                --pose-card-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+                --pose-hover-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
+            }
+            .session-type-card {
+                backdrop-filter: blur(10px);
+            }
+            ";
+        } else {
+            $css_vars .= "
+            :root {
+                --pose-card-bg: #ffffff;
+                --pose-card-border: transparent;
+                --pose-text-color: #1f2937;
+                --pose-desc-color: #666666;
+                --pose-card-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+                --pose-hover-shadow: 0 10px 30px rgba(99, 102, 241, 0.2);
+            }
+            ";
+        }
+
+        wp_add_inline_style('pose-booking-public', $css_vars);
 
         wp_enqueue_script(
             'pose-booking-public',
