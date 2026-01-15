@@ -49,15 +49,15 @@
     padding: 20px;
     font-family: 'Segoe UI', Tahoma, sans-serif;
     direction: rtl;
-    color: #1f2937 !important;
+    color: var(--pose-text-color, #1f2937) !important;
 }
 
 .pose-booking-form {
-    background: linear-gradient(145deg, #ffffff, #f8fafc);
+    background: var(--pose-form-bg, #ffffff);
     border-radius: var(--pose-radius);
     padding: 30px;
     box-shadow: var(--pose-shadow);
-    color: #1f2937 !important;
+    color: var(--pose-text-color, #1f2937) !important;
 }
 
 .pose-booking-form * {

@@ -139,9 +139,14 @@ class Pose_Booking
                 --pose-desc-color: #cccccc;
                 --pose-card-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
                 --pose-hover-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
+                --pose-form-bg: rgba(0, 0, 0, 0.2);
             }
             .session-type-card {
                 backdrop-filter: blur(10px);
+            }
+            .pose-booking-form {
+                backdrop-filter: blur(5px);
+                border: 1px solid rgba(255, 255, 255, 0.1);
             }
             ";
         } else {
@@ -152,7 +157,10 @@ class Pose_Booking
                 --pose-text-color: #1f2937;
                 --pose-desc-color: #666666;
                 --pose-card-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+                --pose-desc-color: #666666;
+                --pose-card-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
                 --pose-hover-shadow: 0 10px 30px rgba(99, 102, 241, 0.2);
+                --pose-form-bg: linear-gradient(145deg, #ffffff, #f8fafc);
             }
             ";
         }
