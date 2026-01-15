@@ -1,0 +1,242 @@
+/* Pose Booking - Admin Styles */
+.pose-booking-admin {
+    padding: 20px;
+}
+
+.pose-booking-stats {
+    display: flex;
+    gap: 20px;
+    margin: 20px 0;
+    flex-wrap: wrap;
+}
+
+.stat-box {
+    background: white;
+    padding: 20px 30px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    min-width: 150px;
+    text-align: center;
+    border-right: 4px solid #6366f1;
+}
+
+.stat-box.pending {
+    border-color: #f59e0b;
+}
+
+.stat-box.confirmed {
+    border-color: #10b981;
+}
+
+.stat-box.completed {
+    border-color: #6366f1;
+}
+
+.stat-box.cancelled {
+    border-color: #ef4444;
+}
+
+.stat-number {
+    display: block;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #1f2937;
+}
+
+.stat-label {
+    color: #6b7280;
+    font-size: 0.9rem;
+}
+
+.pose-booking-filters {
+    margin: 20px 0;
+}
+
+.pose-booking-filters .button {
+    margin-left: 5px;
+}
+
+.booking-status {
+    display: inline-block;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.status-pending {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.status-confirmed {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.status-completed {
+    background: #e0e7ff;
+    color: #3730a3;
+}
+
+.status-cancelled {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.booking-actions .button {
+    margin-left: 5px;
+    margin-bottom: 5px;
+}
+
+.btn-confirm {
+    background: #10b981 !important;
+    color: white !important;
+    border-color: #10b981 !important;
+}
+
+.btn-complete {
+    background: #6366f1 !important;
+    color: white !important;
+    border-color: #6366f1 !important;
+}
+
+.btn-cancel {
+    background: #f59e0b !important;
+    color: white !important;
+    border-color: #f59e0b !important;
+}
+
+.btn-delete {
+    background: #ef4444 !important;
+    color: white !important;
+    border-color: #ef4444 !important;
+}
+
+/* Availability Page */
+.availability-container {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.availability-form {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.availability-form .form-field {
+    margin-bottom: 15px;
+}
+
+.availability-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.availability-form select,
+.availability-form input {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.availability-list {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.slot-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+}
+
+.slot-item:last-child {
+    border-bottom: none;
+}
+
+.slot-info {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.slot-date {
+    font-weight: 600;
+}
+
+.slot-time {
+    color: #6366f1;
+}
+
+.slot-type {
+    color: #6b7280;
+    font-size: 0.9rem;
+}
+
+/* Weekday Checkboxes */
+.weekday-checkboxes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.weekday-checkboxes label {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 8px 12px;
+    background: #f3f4f6;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: normal;
+    transition: all 0.2s;
+    border: 2px solid transparent;
+}
+
+.weekday-checkboxes label:hover {
+    background: #e0e7ff;
+}
+
+.weekday-checkboxes input[type="checkbox"] {
+    width: auto;
+    margin: 0;
+}
+
+.weekday-checkboxes input[type="checkbox"]:checked+span,
+.weekday-checkboxes label:has(input:checked) {
+    background: #6366f1;
+    color: white;
+    border-color: #6366f1;
+}
+
+.availability-form select {
+    padding: 10px 12px;
+    font-size: 14px;
+}
+
+.availability-form .button-primary {
+    width: 100%;
+    margin-top: 10px;
+    padding: 12px;
+    font-size: 14px;
+}
+
+.slot-day {
+    background: #e0e7ff;
+    color: #3730a3;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 0.85rem;
+}
