@@ -16,7 +16,7 @@ if (!defined('ABSPATH')) {
 }
 
 // Plugin Constants
-define('POSE_BOOKING_VERSION', '2.0.5');
+define('POSE_BOOKING_VERSION', '2.0.6');
 define('POSE_BOOKING_PATH', plugin_dir_path(__FILE__));
 define('POSE_BOOKING_URL', plugin_dir_url(__FILE__));
 

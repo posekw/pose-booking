@@ -20,11 +20,27 @@
 .pose-dark-mode {
     --pose-bg-color: rgba(0, 0, 0, 0.2);
     /* Transparent/Glass */
-    --pose-text-main: #ffffff;
+    --pose-text-main: #ffffff !important;
     --pose-text-muted: #e5e5e5;
     --pose-card-bg: rgba(255, 255, 255, 0.05);
     --pose-card-border: rgba(255, 255, 255, 0.1);
     --pose-card-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+/* NUCLEAR OPTION: Explicitly target elements in dark mode */
+.pose-dark-mode h1,
+.pose-dark-mode h2,
+.pose-dark-mode h3,
+.pose-dark-mode h4,
+.pose-dark-mode h5,
+.pose-dark-mode h6,
+.pose-dark-mode p,
+.pose-dark-mode span,
+.pose-dark-mode div,
+.pose-dark-mode .session-price,
+.pose-dark-mode .step-title {
+    color: #ffffff !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .pose-booking-container {
@@ -60,7 +76,6 @@
 .pose-dark-mode .pose-booking-form {
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.1);
-}
 }
 
 .pose-booking-form * {
