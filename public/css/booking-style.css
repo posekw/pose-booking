@@ -53,7 +53,7 @@
 }
 
 .pose-booking-form {
-    background: var(--pose-form-bg, #ffffff);
+    background: var(--pose-form-bg, #ffffff) !important;
     border-radius: var(--pose-radius);
     padding: 30px;
     box-shadow: var(--pose-shadow);
