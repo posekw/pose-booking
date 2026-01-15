@@ -50,8 +50,10 @@
 
 .pose-dark-mode .session-price {
     color: var(--pose-primary) !important;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
-    /* Keep price primary but identifiable */
+    filter: brightness(1.3);
+    /* Brighten for contrast */
+    text-shadow: 0 0 15px var(--pose-primary-transparent);
+    font-size: 1.3rem;
 }
 
 .pose-dark-mode .session-desc {

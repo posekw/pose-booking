@@ -86,11 +86,7 @@ class Pose_Booking_Form
                                     <?php echo esc_html($s['title']); ?>
                                 </h4>
 
-                                <?php if ($description): ?>
-                                    <div class="session-desc" style="font-size: 0.9em; color: #666; margin: 10px 0; line-height: 1.4;">
-                                        <?php echo wp_kses_post($description); ?>
-                                    </div>
-                                <?php endif; ?>
+                                <!-- Description Removed -->
 
                                 <p class="session-price" style="margin-top: auto;">
                                     <?php echo $price_html; ?>
