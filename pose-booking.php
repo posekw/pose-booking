@@ -16,7 +16,7 @@ if (!defined('ABSPATH')) {
 }
 
 // Plugin Constants
-define('POSE_BOOKING_VERSION', '2.0.4');
+define('POSE_BOOKING_VERSION', '2.0.5');
 define('POSE_BOOKING_PATH', plugin_dir_path(__FILE__));
 define('POSE_BOOKING_URL', plugin_dir_url(__FILE__));
 
@@ -135,7 +135,7 @@ class Pose_Booking
             :root {
                 --pose-card-bg: rgba(255, 255, 255, 0.05);
                 --pose-card-border: rgba(255, 255, 255, 0.1);
-                --pose-text-color: #ffffff !important;
+                --pose-text-color: #ffffff;
                 --pose-desc-color: #cccccc;
                 --pose-card-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
                 --pose-hover-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
