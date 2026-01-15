@@ -1,46 +1,30 @@
 /* Pose Booking - Public Styles */
 :root {
+    /* Default (Light Mode) Variables */
     --pose-primary: #6366f1;
-    --pose-primary-dark: #4f46e5;
-    --pose-success: #10b981;
-    --pose-warning: #f59e0b;
-    --pose-danger: #ef4444;
-    --pose-dark: #1f2937;
-    --pose-light: #f3f4f6;
+    --pose-primary-transparent: rgba(99, 102, 241, 0.3);
+
+    --pose-bg-color: linear-gradient(145deg, #ffffff, #f8fafc);
+    --pose-text-main: #1f2937;
+    --pose-text-muted: #666666;
+    --pose-card-bg: #ffffff;
+    --pose-card-border: transparent;
+    --pose-card-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+
     --pose-radius: 16px;
-    --pose-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
 }
 
-/* Booking Summary */
-.booking-summary {
-    background: #f0f9ff;
-    border: 2px solid #0ea5e9;
-    border-radius: 12px;
-    padding: 20px;
-    margin: 20px 0;
-    text-align: right;
-}
-
-.booking-summary h4 {
-    margin: 0 0 15px 0;
-    color: #0369a1 !important;
-}
-
-.booking-summary p {
-    margin: 8px 0;
-}
-
-.booking-actions {
-    display: flex;
-    gap: 10px;
-    margin-top: 20px;
-    justify-content: space-between;
-}
-
-.no-slots {
-    color: #dc2626;
-    text-align: center;
-    padding: 20px;
+/* =========================================
+   DARK MODE OVERRIDES
+   ========================================= */
+.pose-dark-mode {
+    --pose-bg-color: rgba(0, 0, 0, 0.2);
+    /* Transparent/Glass */
+    --pose-text-main: #ffffff;
+    --pose-text-muted: #e5e5e5;
+    --pose-card-bg: rgba(255, 255, 255, 0.05);
+    --pose-card-border: rgba(255, 255, 255, 0.1);
+    --pose-card-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
 
 .pose-booking-container {
@@ -49,15 +33,34 @@
     padding: 20px;
     font-family: 'Segoe UI', Tahoma, sans-serif;
     direction: rtl;
-    color: var(--pose-text-color, #1f2937) !important;
+    color: var(--pose-text-main) !important;
+}
+
+/* Force Text Color Inheritance */
+.pose-booking-container h1,
+.pose-booking-container h2,
+.pose-booking-container h3,
+.pose-booking-container h4,
+.pose-booking-container p,
+.pose-booking-container span,
+.pose-booking-container div {
+    color: var(--pose-text-main);
 }
 
 .pose-booking-form {
-    background: var(--pose-form-bg, #ffffff) !important;
+    background: var(--pose-bg-color) !important;
     border-radius: var(--pose-radius);
     padding: 30px;
-    box-shadow: var(--pose-shadow);
-    color: var(--pose-text-color, #1f2937) !important;
+    box-shadow: var(--pose-card-shadow);
+    color: var(--pose-text-main) !important;
+
+    /* Blur for dark mode */
+}
+
+.pose-dark-mode .pose-booking-form {
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
 }
 
 .pose-booking-form * {

@@ -38,9 +38,16 @@ class Pose_Booking_Form
     {
         $sessions = Pose_Session_Types::get_all();
 
+        $options = get_option('pose_booking_options');
+        $theme_mode = isset($options['theme_mode']) ? $options['theme_mode'] : 'light';
+        $container_class = 'pose-booking-container';
+        if ($theme_mode === 'dark') {
+            $container_class .= ' pose-dark-mode';
+        }
+
         ob_start();
         ?>
-        <div class="pose-booking-container">
+        <div class="<?php echo esc_attr($container_class); ?>">
             <div class="pose-booking-form">
                 <!-- Step 1: Session Type -->
                 <div class="booking-step active" data-step="1">
