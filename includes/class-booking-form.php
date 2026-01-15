@@ -66,7 +66,10 @@ class Pose_Booking_Form
                                 $product = wc_get_product($wc_product_id);
                                 if ($product) {
                                     $price_html = $product->get_price_html();
-                                    $description = $product->get_short_description(); // Get short description
+                                    $description = $product->get_short_description();
+                                    if (empty($description)) {
+                                        $description = wp_trim_words($product->get_description(), 15);
+                                    }
                                     $product_type = $product->get_type();
                                     $product_url = $product->get_permalink();
                                 }
