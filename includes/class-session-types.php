@@ -141,19 +141,6 @@ class Pose_Session_Types
             </tr>
             <tr>
                 <th><label>
-                        <?php _e('المدة (دقيقة)', 'pose-booking'); ?>
-                    </label></th>
-                <td><input type="number" name="pose_duration" value="<?php echo esc_attr($duration); ?>" min="15" step="15">
-                </td>
-            </tr>
-            <tr>
-                <th><label>
-                        <?php _e('السعر (د.ك)', 'pose-booking'); ?>
-                    </label></th>
-                <td><input type="number" name="pose_price" value="<?php echo esc_attr($price); ?>" min="0" step="1"></td>
-            </tr>
-            <tr>
-                <th><label>
                         <?php _e('اللون', 'pose-booking'); ?>
                     </label></th>
                 <td><input type="color" name="pose_color" value="<?php echo esc_attr($color); ?>"></td>
@@ -197,7 +184,7 @@ class Pose_Session_Types
             return;
         }
 
-        $fields = array('icon', 'duration', 'price', 'color', 'wc_product');
+        $fields = array('icon', 'color', 'wc_product');
         foreach ($fields as $field) {
             if (isset($_POST['pose_' . $field])) {
                 update_post_meta($post_id, '_' . $field, sanitize_text_field($_POST['pose_' . $field]));
