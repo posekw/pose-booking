@@ -80,7 +80,13 @@ class Pose_Booking_Form
                                 style="--card-color: <?php echo $s['color']; ?>">
 
                                 <span class="session-icon">
-                                    <?php echo $s['icon']; ?>
+                                    <?php
+                                    if (!empty($s['custom_icon_url'])) {
+                                        echo '<img src="' . esc_url($s['custom_icon_url']) . '" alt="" style="width: 60px; height: 60px; object-fit: contain;">';
+                                    } else {
+                                        echo $s['icon'];
+                                    }
+                                    ?>
                                 </span>
                                 <h4>
                                     <?php echo esc_html($s['title']); ?>

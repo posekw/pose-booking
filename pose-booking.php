@@ -196,6 +196,8 @@ class Pose_Booking
             return;
         }
 
+        wp_enqueue_media(); // Enable Media Uploader
+
         wp_enqueue_style(
             'pose-booking-admin',
             POSE_BOOKING_URL . 'admin/css/admin-style.css',

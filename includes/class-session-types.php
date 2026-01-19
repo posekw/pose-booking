@@ -122,6 +122,9 @@ class Pose_Session_Types
                         <span>🎀</span>
                         <!-- Other -->
                         <span>🚗</span> <span>👶</span> <span>🎓</span> <span>👗</span> <span>💄</span> <span>💇</span>
+                        <!-- Art & Creativity -->
+                        <span>🎨</span> <span>🖌️</span> <span>🖼️</span> <span>🎭</span> <span>✏️</span> <span>✒️</span>
+                        <span>🧵</span> <span>🧶</span>
                     </div>
                     <script>
                         jQuery(document).ready(function ($) {
@@ -184,7 +187,7 @@ class Pose_Session_Types
             return;
         }
 
-        $fields = array('icon', 'color', 'wc_product');
+        $fields = array('icon', 'color', 'wc_product', 'custom_icon_url');
         foreach ($fields as $field) {
             if (isset($_POST['pose_' . $field])) {
                 update_post_meta($post_id, '_' . $field, sanitize_text_field($_POST['pose_' . $field]));
@@ -215,6 +218,7 @@ class Pose_Session_Types
                 'price' => get_post_meta($session->ID, '_price', true) ?: 50,
                 'color' => get_post_meta($session->ID, '_color', true) ?: '#6366f1',
                 'wc_product' => get_post_meta($session->ID, '_wc_product', true),
+                'custom_icon_url' => get_post_meta($session->ID, '_custom_icon_url', true),
             );
         }
         return $result;
