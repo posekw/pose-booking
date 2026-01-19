@@ -108,35 +108,94 @@ class Pose_Session_Types
                         <?php _e('الأيقونة (Emoji)', 'pose-booking'); ?>
                     </label></th>
                 <td>
-                    <input type="text" name="pose_icon" id="pose_icon" value="<?php echo esc_attr($icon); ?>"
-                        style="font-size: 24px; width: 60px;">
-                    <br>
-                    <div style="margin-top: 10px; display: flex; flex-wrap: wrap; gap: 5px; max-width: 400px;">
-                        <!-- Photography -->
-                        <span>📸</span> <span>🎥</span> <span>📷</span> <span>📹</span> <span>🎞️</span> <span>🎬</span>
-                        <!-- Weddings -->
-                        <span>💍</span> <span>👰</span> <span>🤵</span> <span>💒</span> <span>💐</span> <span>🥂</span>
-                        <span>🍾</span>
-                        <!-- Birthdays & Party -->
-                        <span>🎂</span> <span>🍰</span> <span>🎈</span> <span>🎉</span> <span>🎊</span> <span>🎁</span>
-                        <span>🎀</span>
-                        <!-- Other -->
-                        <span>🚗</span> <span>👶</span> <span>🎓</span> <span>👗</span> <span>💄</span> <span>💇</span>
-                        <!-- Art & Creativity -->
-                        <span>🎨</span> <span>🖌️</span> <span>🖼️</span> <span>🎭</span> <span>✏️</span> <span>✒️</span>
-                        <span>🧵</span> <span>🧶</span>
+                    <!-- Emoji Picker -->
+                    <div style="margin-bottom: 20px;">
+                        <input type="text" name="pose_icon" id="pose_icon" value="<?php echo esc_attr($icon); ?>"
+                            style="font-size: 24px; width: 60px;">
+                        <span class="description"><?php _e('أو اختر أيقونة (Emoji)', 'pose-booking'); ?></span>
+                        <div style="margin-top: 10px; display: flex; flex-wrap: wrap; gap: 5px; max-width: 400px;">
+                            <!-- Photography -->
+                            <span>📸</span> <span>🎥</span> <span>📷</span> <span>📹</span> <span>🎞️</span> <span>🎬</span>
+                            <!-- Weddings -->
+                            <span>💍</span> <span>👰</span> <span>🤵</span> <span>💒</span> <span>💐</span> <span>🥂</span>
+                            <span>🍾</span>
+                            <!-- Birthdays & Party -->
+                            <span>🎂</span> <span>🍰</span> <span>🎈</span> <span>🎉</span> <span>🎊</span> <span>🎁</span>
+                            <span>🎀</span>
+                            <!-- Other -->
+                            <span>🚗</span> <span>👶</span> <span>🎓</span> <span>👗</span> <span>💄</span> <span>💇</span>
+                            <!-- Art & Creativity -->
+                            <span>🎨</span> <span>🖌️</span> <span>🖼️</span> <span>🎭</span> <span>✏️</span> <span>✒️</span>
+                            <span>🧵</span> <span>🧶</span>
+                        </div>
                     </div>
+
+                    <!-- Custom Image Upload -->
+                    <div style="border-top: 1px solid #ddd; padding-top: 15px;">
+                        <label style="font-weight:bold;"><?php _e('صورة مخصصة (Custom Image)', 'pose-booking'); ?></label>
+                        <p class="description" style="margin: 5px 0;">
+                            <?php _e('إذا تم تحديد صورة، ستظهر بدلاً من الأيقونة.', 'pose-booking'); ?></p>
+
+                        <?php $custom_icon = get_post_meta($post->ID, '_custom_icon_url', true); ?>
+                        <div style="display: flex; gap: 10px; align-items: flex-start;">
+                            <input type="text" name="pose_custom_icon_url" id="pose_custom_icon_url"
+                                value="<?php echo esc_attr($custom_icon); ?>" style="width: 100%;" placeholder="https://...">
+                            <button type="button" class="button"
+                                id="pose_upload_icon_btn"><?php _e('رفع صورة', 'pose-booking'); ?></button>
+                        </div>
+
+                        <div id="pose_icon_preview_container"
+                            style="margin-top: 10px; <?php echo $custom_icon ? '' : 'display:none;'; ?>">
+                            <img id="pose_icon_preview" src="<?php echo esc_attr($custom_icon); ?>"
+                                style="max-height: 80px; border: 1px solid #ccc; padding: 2px;">
+                            <br>
+                            <button type="button" class="button-link-delete" id="pose_remove_icon_btn"
+                                style="margin-top: 5px; color: #b32d2e;"><?php _e('حذف الصورة', 'pose-booking'); ?></button>
+                        </div>
+                    </div>
+
                     <script>
                         jQuery(document).ready(function ($) {
+                            // Emoji Picker
                             $('.form-table span').css({
                                 'cursor': 'pointer',
                                 'font-size': '20px',
                                 'padding': '5px',
                                 'border': '1px solid #ddd',
                                 'border-radius': '4px',
-                                'background': '#fff'
+                                'background': '#fff',
+                                'display': 'inline-block'
                             }).on('click', function () {
                                 $('#pose_icon').val($(this).text());
+                            });
+
+                            // Media Uploader
+                            var mediaUploader;
+                            $('#pose_upload_icon_btn').click(function (e) {
+                                e.preventDefault();
+                                if (mediaUploader) {
+                                    mediaUploader.open();
+                                    return;
+                                }
+                                mediaUploader = wp.media.frames.file_frame = wp.media({
+                                    title: 'اختر أيقونة الجلسة',
+                                    button: {
+                                        text: 'استخدم هذه الصورة'
+                                    },
+                                    multiple: false
+                                });
+                                mediaUploader.on('select', function () {
+                                    var attachment = mediaUploader.state().get('selection').first().toJSON();
+                                    $('#pose_custom_icon_url').val(attachment.url);
+                                    $('#pose_icon_preview').attr('src', attachment.url);
+                                    $('#pose_icon_preview_container').show();
+                                });
+                                mediaUploader.open();
+                            });
+
+                            $('#pose_remove_icon_btn').click(function () {
+                                $('#pose_custom_icon_url').val('');
+                                $('#pose_icon_preview_container').hide();
                             });
                         });
                     </script>
